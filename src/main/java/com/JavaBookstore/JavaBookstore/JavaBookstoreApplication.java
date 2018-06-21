@@ -10,3 +10,9 @@ public class JavaBookstoreApplication {
 		SpringApplication.run(JavaBookstoreApplication.class, args);
 	}
 }
+
+
+/*
+ran from here then went to browser to localhost8080
+and display was bookstore navbar example, so success
+ */
