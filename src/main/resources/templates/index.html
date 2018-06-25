@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 
-    <title>Java Bookstore</title>
+    <title>JAVA BOOKSTORE</title>
 
     <!-- Bootstrap core CSS -->
     <!--modified path-->
@@ -21,43 +21,36 @@
 </head>
 
 <body>
-<div class="page-top" style="width:100%; height:20px; background-color: #FF0000;"></div>
+<div class="page-top"
+     style="width:100%; height:20px; background-color: #FF0000;"></div>
 <!-- Static navbar -->
 <nav class="navbar navbar-default navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Java Bookstore</a>
+            <a class="navbar-brand" href="#">JAVA BOOKSTORE</a>
         </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+        <div id="navbar">
+            <ul class="nav navbar-nav navbar-left">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle"
+                       data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">BOOKS <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li class="dropdown-header">Nav header</li>
-                        <li><a href="#">Separated link</a></li>
-                        <li><a href="#">One more separated link</a></li>
-                    </ul>
-                </li>
+                        <li><a href="#">CHECK OUT OUR BOOKS</a></li>
+                        <li><a href="#">STORE HOURS &#38; DIRECTIONS</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul></li>
+                    <form class="navbar-form">
+                        <div class="form-group">
+                            <input type="text" name="keyword" class="form-control" placeholder="Book Title"/>
+                        </div>
+                        <button type="submit" class="btn btn-default">SEARCH</button>
+                    </form>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="./">Default <span class="sr-only">(current)</span></a></li>
-                <li><a href="../navbar-static-top/">Static top</a></li>
-                <li><a href="../navbar-fixed-top/">Fixed top</a></li>
+                <li><a href="#">SHOPPING CART</a></li>
+                <li><a href="#">MY ACCOUNT</a></li>
+                <li><a href="#">LOG OUT</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
@@ -194,6 +187,9 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
+                    <img src="https://image.freepik.com/free-photo/no-translate-detected_1249-1097.jpg"
+                         style="width:100%;height:300px;"/>
+                    <div class="carousel-caption">
                     <div class="row">
                         <div class="col-xs-2">
                             <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
@@ -218,62 +214,71 @@
                         <div class="col-xs-2">
                             <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
                                  style="width:120px;height:200px;"/>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="item">
+                    <img src="https://image.freepik.com/free-photo/no-translate-detected_1249-1097.jpg"
+                         style="width:100%;height:300px;"/>
+                    <div class="carousel-caption">
                     <div class="row">
-                            <div class="col-xs-2">
-                                <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
-                                     style="width:120px;height:200px;"/>
-                            </div>
-                            <div class="col-xs-2">
-                                <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
-                                     style="width:120px;height:200px;"/>
-                            </div>
-                            <div class="col-xs-2">
-                                <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
-                                     style="width:120px;height:200px;"/>
-                            </div>
-                            <div class="col-xs-2">
-                                <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
-                                     style="width:120px;height:200px;"/>
-                            </div>
-                            <div class="col-xs-2">
-                                <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
-                                     style="width:120px;height:200px;"/>
-                            </div>
-                            <div class="col-xs-2">
-                                <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
-                                     style="width:120px;height:200px;"/>
+                        <div class="col-xs-2">
+                            <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
+                                 style="width:120px;height:200px;"/>
+                        </div>
+                        <div class="col-xs-2">
+                            <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
+                                 style="width:120px;height:200px;"/>
+                        </div>
+                        <div class="col-xs-2">
+                            <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
+                                 style="width:120px;height:200px;"/>
+                        </div>
+                        <div class="col-xs-2">
+                            <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
+                                 style="width:120px;height:200px;"/>
+                        </div>
+                        <div class="col-xs-2">
+                            <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
+                                 style="width:120px;height:200px;"/>
+                        </div>
+                        <div class="col-xs-2">
+                            <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
+                                 style="width:120px;height:200px;"/>
+                        </div>
                         </div>
                     </div>
                 </div>
                 <div class="item">
+                    <img src="https://image.freepik.com/free-photo/no-translate-detected_1249-1097.jpg"
+                         style="width:100%;height:300px;"/>
+                    <div class="carousel-caption">
                     <div class="row">
-                            <div class="col-xs-2">
-                                <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
-                                     style="width:120px;height:200px;"/>
+                        <div class="col-xs-2">
+                            <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
+                                 style="width:120px;height:200px;"/>
+                        </div>
+                        <div class="col-xs-2">
+                            <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
+                                 style="width:120px;height:200px;"/>
+                        </div>
+                        <div class="col-xs-2">
+                            <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
+                                 style="width:120px;height:200px;"/>
+                        </div>
+                        <div class="col-xs-2">
+                            <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
+                                 style="width:120px;height:200px;"/>
+                        </div>
+                        <div class="col-xs-2">
+                            <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
+                                 style="width:120px;height:200px;"/>
+                        </div>
+                        <div class="col-xs-2">
+                            <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
+                                 style="width:120px;height:200px;"/>
                             </div>
-                            <div class="col-xs-2">
-                                <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
-                                     style="width:120px;height:200px;"/>
-                            </div>
-                            <div class="col-xs-2">
-                                <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
-                                     style="width:120px;height:200px;"/>
-                            </div>
-                            <div class="col-xs-2">
-                                <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
-                                     style="width:120px;height:200px;"/>
-                            </div>
-                            <div class="col-xs-2">
-                                <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
-                                     style="width:120px;height:200px;"/>
-                            </div>
-                            <div class="col-xs-2">
-                                <img src="https://cdn-images-1.medium.com/max/1000/0*CeZGsE_ngNaKWT3R.jpg"
-                                     style="width:120px;height:200px;"/>
                         </div>
                     </div>
                 </div>
