@@ -1,60 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-
-    <title>JAVA BOOKSTORE</title>
-
-    <!-- Bootstrap core CSS -->
-    <!--modified path-->
-    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
-
-    <link href="/css/non-responsive.css" rel="stylesheet"/>
-
-    <!-- Custom styles for this template -->
-    <link href="/css/style.css" rel="stylesheet"/>
-
-    <!--little icon on browser title-->
-    <link rel="icon" href="http://worldartsme.com/images/apple-book-clipart-1.jpg"/>
-
-</head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header"></head>
 
 <body>
-<div class="page-top"
-     style="width:100%; height:20px; background-color: #FF0000;"></div>
-<!-- Static navbar -->
-<nav class="navbar navbar-default navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">JAVA BOOKSTORE</a>
-        </div>
-        <div id="navbar">
-            <ul class="nav navbar-nav navbar-left">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle"
-                       data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">BOOKS <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">CHECK OUT OUR BOOKS</a></li>
-                        <li><a href="#">STORE HOURS &#38; DIRECTIONS</a></li>
-                        <li><a href="#">FAQs</a></li>
-                    </ul></li>
-                    <form class="navbar-form">
-                        <div class="form-group">
-                            <input type="text" name="keyword" class="form-control" placeholder="Book Title"/>
-                        </div>
-                        <button type="submit" class="btn btn-default">SEARCH</button>
-                    </form>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">SHOPPING CART</a></li>
-                <li><a href="#">MY ACCOUNT</a></li>
-                <li><a href="#">LOG OUT</a></li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div><!--/.container-fluid -->
-</nav>
+
+<div th:replace="common/header :: navbar"/>
 
 <div class="container">
     <div class="row">
@@ -296,12 +246,8 @@
     </div>
 </div>
 <!--container end-->
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
 
+<div th:replace="common/header :: body-bottom-scripts"/>
 
 </body>
 </html>
