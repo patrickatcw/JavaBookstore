@@ -1,21 +1,26 @@
 package com.JavaBookstore.JavaBookstore.domain;
 
+import javax.persistence.*;
+
+@Entity
 public class User {
 
     //fields
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="id", nullable = false, updatable = false)
     private Long id;
     private String username;
     private String password;
     private String firstName;
     private String lastName;
 
+    @Column(name="email", nullable = false, updatable = false)
     private String email;
     private String phone;
     private boolean enabled=true;
 
-    //getters setters
-
-
+    //getters and setters
     public Long getId() {
         return id;
     }
@@ -80,3 +85,4 @@ public class User {
         this.enabled = enabled;
     }
 }
+
