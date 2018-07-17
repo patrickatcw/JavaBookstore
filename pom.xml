@@ -52,6 +52,12 @@
             <version>2.3.0</version>
         </dependency>
 
+		<!--put in below for security branch-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
 		<!--for thymeleaf-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
