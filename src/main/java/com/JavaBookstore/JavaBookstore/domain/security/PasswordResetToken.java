@@ -16,6 +16,7 @@ public class PasswordResetToken {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    //string token and user bind in a 1 to 1 relationship in a time period, expirytime
     private String token;
 
     @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
