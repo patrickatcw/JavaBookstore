@@ -45,7 +45,7 @@
                 <!-- create new user pane -->
                 <!--changed below while working in securityconfig branch-->
                 <!--<div class="tab-pane fade" id="tab-1" >-->
-                <div class="tab-pane fade" id="tab-1" th:classappend="${classActiveNewAccount}? 'active'">
+                <div class="tab-pane fade" id="tab-1" th:classappend="${classActiveNewAccount}? 'active'" />
                     <div class="panel-group">
                         <div class="panel panel-default" style="border: none;">
                             <div class="panel-body"
@@ -80,7 +80,7 @@
                 <!--<div class="tab-pane fade" id="tab-2">-->
                 <!--added while working in securityconfig class, coming from homecontroller,
                 when it becomes true, myAccount will be returned-->
-                <div class="tab-pane fade" id="tab-2" th:classappend="${classActiveLogin}? 'in active'">
+                <div class="tab-pane fade" id="tab-2" th:classappend="${classActiveLogin}? 'in active'" />
                     <div class="panel-group">
                         <div class="panel panel-default" style="border: none;">
                             <div class="panel-body"

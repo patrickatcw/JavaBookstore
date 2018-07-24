@@ -1,0 +1,8 @@
+<root>
+    <item name='org.springframework.stereotype.Component'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+    <item name='org.springframework.stereotype.Controller'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>
