@@ -91,7 +91,8 @@ public class HomeController {
 
         /*model.addAttribute("classActiveNewUser", true);
         return "myAccount";*/
-        //change from above in pswrdrstkn branch need to add myProfile next
+
+        //change from above in pswrdrstkn branch
         model.addAttribute("classActiveEdit", true);
         return "myProfile"; //need to add myProfile html file template next
 
