@@ -1,17 +1,20 @@
 package com.JavaBookstore.JavaBookstore.domain.security;
 
+//binding token to user in a time window
+
 import com.JavaBookstore.JavaBookstore.domain.User;
 
 import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.JavaBookstore.JavaBookstore.domain.User;
+
 @Entity
 public class PasswordResetToken {
 
     private static final int EXPIRATION = 60 * 24;
 
-    //fields
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

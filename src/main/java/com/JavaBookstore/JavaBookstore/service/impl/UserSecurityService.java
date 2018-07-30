@@ -1,13 +1,12 @@
 package com.JavaBookstore.JavaBookstore.service.impl;
 
+import com.JavaBookstore.JavaBookstore.domain.User;
 import com.JavaBookstore.JavaBookstore.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
-import com.JavaBookstore.JavaBookstore.domain.User;
 
 @Service
 public class UserSecurityService implements UserDetailsService {
@@ -17,10 +16,10 @@ public class UserSecurityService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        com.JavaBookstore.JavaBookstore.domain.User user = userRepository.findByUsername(username);
+        User user = userRepository.findByUsername(username);
 
         if(null == user) {
-            throw new UsernameNotFoundException("Username not found");
+            throw new UsernameNotFoundException("Username NOT FOUND");
         }
 
         return user;

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<!--<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">-->
+<!--added another schema whole working in branch pswrdrstkn-->
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:fragment="common-header">
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -50,8 +52,14 @@
                 <li><a href="#">SHOPPING CART</a></li>
                 <!--changed below while working in securityconfig brranch-->
                 <!--<li><a href="#">MY ACCOUNT</a></li>-->
-                <li><a th:href="@{/login}">MY ACCOUNT</a></li>
-                <li><a href="#">LOG OUT</a></li>
+                <!--<li><a th:href="@{/login}">MY ACCOUNT</a></li>-->
+                <!--changed in pswrdrstkn-->
+                <li><a sec:authorize="isAnonymous()" th:href="@{/login}">MY ACCOUNT</a></li>
+                <li><a sec:authorize="isAuthenticated()" th:href="@{/myProfile}">MY ACCOUNT</a></li>
+                <!--added in pswrdrstkn branch work-->
+                <!--<li><a href="#">LOG OUT</a></li>-->
+                <!--chnaged in pswrdrstkn branch work-->
+                <li><a sec:authorize="isAuthenticated()"href="@{/logout">LOG OUT</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->

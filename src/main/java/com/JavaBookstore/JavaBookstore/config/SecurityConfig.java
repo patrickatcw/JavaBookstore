@@ -13,8 +13,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.JavaBookstore.JavaBookstore.service.impl.UserSecurityService;
-
 @Configuration        //a configuration class sprong boot will enable configuration
 @EnableWebSecurity   //enables the web security provided by spring
 @EnableGlobalMethodSecurity(prePostEnabled=true)    //allows for more detailed users rows, etc.
