@@ -30,6 +30,12 @@ public class UserRole {
     //field
     private Role role;
 
+    //had to include this as a default constructor to fix error....
+    //Caused by: org.springframework.orm.jpa.JpaSystemException: No default constructor for entity:
+    // : com.JavaBookstore.JavaBookstore.domain.security.UserRole;
+    //https://stackoverflow.com/questions/44088360/org-hibernate-instantiationexception-no-default-constructor-for-entity-princ
+    public UserRole(){}
+
     //constructor
     public UserRole(User user, Role role) {
         this.user = user;
