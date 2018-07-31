@@ -7,8 +7,11 @@ import com.JavaBookstore.JavaBookstore.domain.security.UserRole;
 import com.JavaBookstore.JavaBookstore.service.UserService;
 import com.JavaBookstore.JavaBookstore.service.impl.UserSecurityService;
 
+import com.JavaBookstore.JavaBookstore.utility.MailConstructor;
 import com.JavaBookstore.JavaBookstore.utility.SecurityUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,6 +31,12 @@ import java.util.UUID;
 
 @Controller
 public class HomeController {
+
+    @Autowired
+    private JavaMailSender mailSender;
+
+    @Autowired
+    private MailConstructor mailConstructor;
 
     @Autowired
     private UserService userService;
@@ -110,6 +119,8 @@ public class HomeController {
         String appUrl = "http://"+request.getServerName()+":"+request.getServerPort()+request.getContextPath();
 
         SimpleMailMessage email = mailConstructor.constructResetTokenEmail(appUrl, request.getLocale(), token, user, password);
+        //add mailConstructor in pom dependency
+        //need to define mailConstructor in class MailConstrcutor
 
         mailSender.send(email);
 
