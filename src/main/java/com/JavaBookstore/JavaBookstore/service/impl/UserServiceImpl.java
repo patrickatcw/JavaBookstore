@@ -6,6 +6,7 @@ import com.JavaBookstore.JavaBookstore.domain.User;
 import com.JavaBookstore.JavaBookstore.domain.security.PasswordResetToken;
 import com.JavaBookstore.JavaBookstore.domain.security.UserRole;
 import com.JavaBookstore.JavaBookstore.repository.PasswordResetTokenRepository;
+import com.JavaBookstore.JavaBookstore.repository.RoleRepository;
 import com.JavaBookstore.JavaBookstore.repository.UserRepository;
 import com.JavaBookstore.JavaBookstore.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
