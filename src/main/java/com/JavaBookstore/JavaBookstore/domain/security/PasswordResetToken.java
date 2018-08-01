@@ -28,6 +28,9 @@ public class PasswordResetToken {
 
     private Date expiryDate;
 
+    //had to add default constructor for link to work in new user validation email
+    public PasswordResetToken(){}
+
     //constructor
     public PasswordResetToken(final String token, final User user) {
         super ();

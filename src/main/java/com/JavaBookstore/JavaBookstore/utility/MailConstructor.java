@@ -18,7 +18,10 @@ public class MailConstructor {
     ) {
 
         //in conjunction with homecontroller
-        String url = contextPath = "/newUser?token="+token;
+        //String url = contextPath = "/newUser?token="+token;
+        //had to change = to + to get link to work sent in initial user validation email
+        //and in passwordresettoken had to add default oonstructor,  public PasswordResetToken(){}
+        String url = contextPath + "/newUser?token="+token;
         String message = "\nPlease click on this link to verify your email and edit your personal information. Your password is: \n"+password;
         SimpleMailMessage email = new SimpleMailMessage();
         email.setTo(user.getEmail());

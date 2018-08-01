@@ -12,7 +12,7 @@
         <div class="col-xs-8">
             <h2 class="section-headline">
                 <!--https://www.thymeleaf.org/apidocs/thymeleaf/2.1.4.RELEASE/org/thymeleaf/expression/Strings.html-->
-                <h2 class="section-headline"><span th:text="${#strings.toUpperCase{user.username}}"></span></h2>
+                <h2 class="section-headline"><span th:text="${#strings.toUpperCase(user.username)}"></span></h2>
             </h2>
         </div>
         <div class="col-xs-4">
@@ -80,10 +80,11 @@
                                         certain notification.</p>
                                 </div>-->
 
+                                <!--edit user information continued....-->
                                 <!--added in pswrdrstkn branch work-->
                                 <form th:action="@{/updateUserInfo}" method="post">
-                                   <input type="hidden" name="id" th:value="user.id}">
-                                    <div class="bg-info" th:if="${updateUserInfo}">User Information Updated!</div>
+                                   <input type="hidden" name="id" th:value="user.id}"/>
+                                    <div class="bg-info" th:if="${updateUserInfo}">Well Done! User Information Updated!</div>
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-xs-6">

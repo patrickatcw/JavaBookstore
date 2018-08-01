@@ -159,6 +159,9 @@ public class HomeController {
         //sets authentication to the current user
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
+        //added while figuring out link problem for new user email validation
+        model.addAttribute("user", user);
+
         /*model.addAttribute("classActiveNewUser", true);
         return "myAccount";*/
 
