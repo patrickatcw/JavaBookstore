@@ -56,14 +56,20 @@
                                     </div><!--in security config, add newuser and forget password, lines 37,38-->
                                 <form th:action="@{/newUser}" method="post">
                                     <div class="form-group">
-                                        <label for="newUsername">* Username: </label> <input
+                                        <label for="newUsername">* Username: </label>&nbsp;
+                                        <!--prevents signing up twice with same credentials-->
+                                        <span style="color:red;"th:if="${usernameExists}">Oh no! This user name already exists, choose a different user name. Thank you!</span>
+                                        <input
                                             required="required" type="text" class="form-control"
                                             id="newUsername" name="username"/>
                                         <p style="color: #828282">Enter your username here.</p>
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="email">* Email Address: </label> <input
+                                        <label for="email">* Email Address: </label>
+                                        <!--prevents signing up twice with same credentials-->
+                                        <span style="color:red;"th:if="${emailExists}">Oh no! This email already exists, choose a different email. Thank you!</span>
+                                        <input
                                             required="required" type="text" class="form-control"
                                             id="email" name="email"/>
                                         <p style="color: #828282">Enter a valid email address. All
