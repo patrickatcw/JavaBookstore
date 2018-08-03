@@ -13,7 +13,7 @@ import com.JavaBookstore.JavaBookstore.domain.User;
 @Entity
 public class PasswordResetToken {
 
-    private static final int EXPIRATION = 60 * 24;
+    private static final int EXPIRATION = 60 * 24;  //password expires in 24 hours, made note in message to new user
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -31,7 +31,7 @@ public class PasswordResetToken {
     //had to add default constructor for link to work in new user validation email
     public PasswordResetToken(){}
 
-    //constructor
+    //constructor with parameters
     public PasswordResetToken(final String token, final User user) {
         super ();
 

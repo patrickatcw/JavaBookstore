@@ -60,6 +60,7 @@ public class UserServiceImpl implements UserService {
 
         if(localUser != null) {
             //did below after defined logger above
+            //for new user sign-up
             LOG.info("User {} already exists. Nothing will be done.", user.getUsername());
         } else {
             for (UserRole ur : userRoles) {
