@@ -76,6 +76,7 @@ public class HomeController {
     }
 
     //added while in pswrdrstkn
+    //in conjunction with myAccount alert alert-info
     @RequestMapping(value="/newUser", method= RequestMethod.POST)
     public String newUserPost(HttpServletRequest request,
                               @ModelAttribute("email") String userEmail,

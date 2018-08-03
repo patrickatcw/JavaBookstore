@@ -19,6 +19,7 @@ import java.util.Set;
 @Service
 public class UserServiceImpl implements UserService {
 
+    //defining logger
     private static final Logger LOG = LoggerFactory.getLogger(UserService.class);
 
     @Autowired
@@ -58,6 +59,7 @@ public class UserServiceImpl implements UserService {
         User localUser = userRepository.findByUsername(user.getUsername());
 
         if(localUser != null) {
+            //did below after defined logger above
             LOG.info("User {} already exists. Nothing will be done.", user.getUsername());
         } else {
             for (UserRole ur : userRoles) {

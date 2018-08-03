@@ -34,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/image/**",
             "/",    //root
             //"/myAccount"
+            //paths important for new user login and email notification
             "/newUser",
             "/forgetPassword"
 

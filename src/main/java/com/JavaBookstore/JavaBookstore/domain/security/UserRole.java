@@ -35,8 +35,8 @@ public class UserRole {
     // : com.JavaBookstore.JavaBookstore.domain.security.UserRole;
     //https://stackoverflow.com/questions/44088360/org-hibernate-instantiationexception-no-default-constructor-for-entity-princ
     public UserRole(){}
-
-    //constructor
+    //default constructor defined in conjunction with parameter-based constructor
+    //perameter based constructor
     public UserRole(User user, Role role) {
         this.user = user;
         this.role = role;

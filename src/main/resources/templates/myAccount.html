@@ -45,12 +45,12 @@
                 <!-- create new user pane -->
                 <!--changed below while working in securityconfig branch-->
                 <!--<div class="tab-pane fade" id="tab-1" >-->
-                <div class="tab-pane fade" id="tab-1" th:classappend="${classActiveNewAccount}? 'active'" />
+                <div class="tab-pane fade" id="tab-1" th:classappend="${classActiveNewAccount}? 'in active'">
                     <div class="panel-group">
                         <div class="panel panel-default" style="border: none;">
                             <div class="panel-body"
                                  style="background-color: #ededed; margin-top: 20px;">
-                                <div class="alert alert-info" th:if="${emailSent}">
+                                <div class="alert alert-info" th:if="${emailSent}"> <!--message displayed if email sent variable is valued to be true-->
                                     An email has been sent to the email address you just registered.
                                     Please validate you email address and update your password information. Thank you!
                                     </div><!--in security config, add newuser and forget password, lines 37,38-->
@@ -76,7 +76,7 @@
                                             emails from the system will be sent to this address. The
                                             email address is not made public and will only be used if
                                             you wish to receive a new password or wish to receive
-                                            certain notification.</p>
+                                            certain notifications.</p>
                                     </div>
 
                                     <button type="submit" class="btn btn-primary">Create New Account</button>
