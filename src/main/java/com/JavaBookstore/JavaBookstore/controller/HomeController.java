@@ -86,14 +86,14 @@ public class HomeController {
         model.addAttribute("email", userEmail);
         model.addAttribute("username", username);
 
-        //for login, validation
+        //for login, validation of username existing
         if (userService.findByUsername(username) != null) { //need to make findByUserName method in userservice
             model.addAttribute("usernameExists", true);
 
             return "myAccount";
         }
 
-        //for login, validation
+        //for login, validation of email existing
         if (userService.findByEmail(userEmail) != null) {   //need to make findByEmail method in userservice
             model.addAttribute("emailExists", true);
 
