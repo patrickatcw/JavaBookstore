@@ -19,4 +19,7 @@ public interface UserService {
     //homecontroller
     User createUser(User user, Set<UserRole> userRoles) throws Exception;
 
+    //homecontroller
+    User save(User user);
+
 }

@@ -28,15 +28,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     //files available without security, easily accessed
+    //https://docs.oracle.com/javase/7/docs/api/java/util/regex/Matcher.html
     private static final String[] PUBLIC_MATCHERS = {
             "/css/**",
             "/js/**",
-            "/image/**",
             "/",    //root
             //"/myAccount"
             //paths important for new user login and email notification
             "/newUser",
-            "/forgetPassword"
+            "/forgetPassword",
+            "/login",
+            "/fonts/**"
 
     };
 
@@ -50,7 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .csrf().disable().cors().disable()          //disables crosssite requests
-                .formLogin().failureUrl("/login?error").defaultSuccessUrl("/")
+                .formLogin().failureUrl("/login?error")/*.defaultSuccessUrl("/")*/
+                //commented out above to fix parsing error for line 32 in header
                 .loginPage("/login").permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

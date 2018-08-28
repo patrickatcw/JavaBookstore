@@ -3,17 +3,17 @@
 <!--added another schema whole working in branch pswrdrstkn-->
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:fragment="common-header">
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>JAVA BOOKSTORE</title>
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="/css/non-responsive.css" rel="stylesheet"/>
+    <link href="/css/non-responsive.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="/css/style.css" rel="stylesheet"/>
+    <link href="/css/style.css" rel="stylesheet">
 
     <!--little icon on browser title-->
     <link rel="icon" href="http://worldartsme.com/images/apple-book-clipart-1.jpg"/>
@@ -58,8 +58,8 @@
                 <li><a sec:authorize="isAuthenticated()" th:href="@{/myProfile}">MY ACCOUNT</a></li>
                 <!--added in pswrdrstkn branch work-->
                 <!--<li><a href="#">LOG OUT</a></li>-->
-                <!--chnaged in pswrdrstkn branch work-->
-                <li><a sec:authorize="isAuthenticated()"href="@{/logout">LOG OUT</a></li>
+                <!--changed in pswrdrstkn branch work-->
+                <li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOG OUT</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->

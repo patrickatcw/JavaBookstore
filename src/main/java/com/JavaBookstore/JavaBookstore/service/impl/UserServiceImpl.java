@@ -55,7 +55,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByEmail(email);
     }
 
-    public User createUser(User user, Set<UserRole> userRoles) throws Exception{
+    @Override
+    public User createUser(User user, Set<UserRole> userRoles) {
         User localUser = userRepository.findByUsername(user.getUsername());
 
         if(localUser != null) {
@@ -73,6 +74,12 @@ public class UserServiceImpl implements UserService {
         }
 
         return localUser;
+    }
+
+    //homecontroller and userservice
+    @Override
+    public User save(User user) {
+        return userRepository.save(user);
     }
 
 }
