@@ -112,6 +112,7 @@
 
                                     <button type="submit" class="btn btn-primary">Log in</button>
                                 </form>
+                                <br>
                                 <div th:if="${param.error != null}" style="color:red;">We are sorry, but the user name or password are incorrect,
                                     please try again, thank you!</div>
                             </div>
@@ -125,11 +126,10 @@
                 <div class="tab-pane fade" id="tab-3" th:classappend="${classActiveForgetPassword}? 'in active'">
                     <div class="panel-group">
                         <div class="panel panel-default" style="border: none;">
-                            <div class="panel-body"
-                                 style="background-color: #ededed; margin-top: 20px;">
+                            <div class="panel-body" style="background-color: #ededed; margin-top: 20px;">
                                 <div th:if="${emailNotExist}" class="alert alert-danger">OH NO, this email
                                     does not exist, try again please, thank you!</div>
-                                <div th:if="${forgetPasswordEmailSent}" class="alert alert-success">An email has been sent, thank yuo!</div>
+                                <div th:if="${forgetPasswordEmailSent}" class="alert alert-success">An email has been sent, thank you!</div>
                                 <form th:action="@{/forgetPassword}" method="post">
                                     <div class="form-group">
                                         <label for="recoverEmail">* Your Email: </label>
