@@ -8,7 +8,7 @@ public class Authority implements GrantedAuthority{
     //fields
     private final String authority;
 
-    //constuctor
+    //constructor
     public Authority(String authority) {
         this.authority = authority;
     }
@@ -16,7 +16,6 @@ public class Authority implements GrantedAuthority{
     //override method
     @Override
     public String getAuthority() {
-        //return null;
         return authority;
     }
 }

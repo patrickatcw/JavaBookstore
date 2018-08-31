@@ -1,4 +1,4 @@
-package com.JavaBookstoreAdmin.domain.security;
+package com.JavaBookstoreAdmin.domain;
 
 import org.springframework.web.multipart.MultipartFile;
 
