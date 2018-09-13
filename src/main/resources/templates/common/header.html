@@ -33,11 +33,17 @@
         <div id="navbar">
             <ul class="nav navbar-nav navbar-left">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle"
+                    <!--<a href="#" class="dropdown-toggle"
                        data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">BOOKS <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">CHECK OUT OUR BOOKS</a></li>
+                        <li><a href="#">CHECK OUT OUR BOOKS</a></li>-->
+                    <a th:href="@{/bookoptions}" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-haspopup="true" aria-expanded="false">BOOKS <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a th:href="@{/bookoptions}">Check Out Our Cool Books...</a>
+                        </li>
                         <li><a href="#">STORE HOURS &#38; DIRECTIONS</a></li>
                         <li><a href="#">FAQs</a></li>
                     </ul></li>

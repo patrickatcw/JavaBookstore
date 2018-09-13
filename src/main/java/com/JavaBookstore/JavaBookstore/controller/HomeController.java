@@ -4,6 +4,7 @@ import com.JavaBookstore.JavaBookstore.domain.User;
 import com.JavaBookstore.JavaBookstore.domain.security.PasswordResetToken;
 import com.JavaBookstore.JavaBookstore.domain.security.Role;
 import com.JavaBookstore.JavaBookstore.domain.security.UserRole;
+import com.JavaBookstore.JavaBookstore.service.BookService;
 import com.JavaBookstore.JavaBookstore.service.UserService;
 import com.JavaBookstore.JavaBookstore.service.impl.UserSecurityService;
 
@@ -24,10 +25,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
-import java.util.UUID;
+import com.JavaBookstore.JavaBookstore.domain.Book;
+import java.util.*;
 
 @Controller
 public class HomeController {
@@ -43,6 +42,9 @@ public class HomeController {
 
     @Autowired
     private UserSecurityService userSecurityService;
+
+    @Autowired
+    private BookService bookService;
 
     @RequestMapping("/")
     public String index(){
@@ -60,6 +62,14 @@ public class HomeController {
     public String login(Model model) {
         model.addAttribute("classActiveLogin", true);
         return "myAccount";
+    }
+
+    @RequestMapping("/bookoptions")
+    public String bookshelf(Model model) {
+        List<Book> bookList = bookService.findAll();
+        model.addAttribute("bookList", bookList);
+
+        return "bookoptions";
     }
 
     /*@RequestMapping("/forgetPassword")
