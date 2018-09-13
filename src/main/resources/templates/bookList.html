@@ -10,12 +10,13 @@
 <div class="container">
     <div class="row" style="margin-bottom: -120px;">
         <div class="col-xs-8">
-            <h2 class="section-headline"></h2>
+            <h2 class="section-headline">
             <!--https://www.thymeleaf.org/apidocs/thymeleaf/2.1.4.RELEASE/org/thymeleaf/expression/Strings.html-->
             <h2 class="section-headline">
                 <!--<span th:text="${#strings.toUpperCase(user.username)}"></span>-->
                 <!--evaluates if user exists-->
-                <span th:text="${user}? ${#strings.toUpperCase(user.username)} : 'ALL BOOKS'"></span>
+                <span th:text="${user}? ${#strings.toUpperCase(user.username)} : 'BOOK INVENTORY'"></span>
+            </h2>
             </h2>
         </div>
         <div class="col-xs-4">
@@ -34,20 +35,22 @@
             </div>
 
             <table border="0" id="bookList">
-                <thead><tr><th></th></tr></thead>
+                <thead><tr><th></th></tr></thead>  <!--this is where the book image and info sits-->
                 <tbody>
                 <tr class="book-item" data-th-each="book : ${bookList}">
                     <td>
                         <div th:if="${book != null}">
+                            <br>
+                            <br>
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <!--need to create path in appllications.property-->
-                                    <img class="img-responsive options-book" th:src="#{adminPath}+@{/image/book/}+${book.id}+'.png'"/>
+                                    <!--need to create path in messages.property-->
+                                    <img class="img-responsive options-book" th:src="#{adminPath}+@{/../image/book/}+${book.id}+'.png'"/>
                                 </div>
                                 <div class="col-xs-9">
-                                    <h4 th:text="{book.title}"></h4>
+                                    <h4 th:text="${book.title}"></h4>
                                     <span th:text="${book.publicationDate}"></span>
-                                    <span th:text=$"{book.author}"></span>
+                                    <span th:text="${book.author}"></span>
                                     <span th:text="${#strings.capitalize(book.format)}"></span>
                                     <span th:text="${book.numberOfPages}"><span> Pages</span></span>
                                     <span style="font-size:x-large;color:#e9846a;">
@@ -59,6 +62,8 @@
 
                                     <!--thymeleaf strings format-->
                                     <p th:text="${#strings.abbreviate(book.description, 500)}"></p>
+                                <br>
+                                    <br>
                                 </div>
                             </div>
                         </div>

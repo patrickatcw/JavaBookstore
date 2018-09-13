@@ -64,12 +64,12 @@ public class HomeController {
         return "myAccount";
     }
 
-    @RequestMapping("/bookoptions")
+    @RequestMapping("/booklist")
     public String bookshelf(Model model) {
         List<Book> bookList = bookService.findAll();
         model.addAttribute("bookList", bookList);
 
-        return "bookoptions";
+        return "booklist";
     }
 
     /*@RequestMapping("/forgetPassword")
