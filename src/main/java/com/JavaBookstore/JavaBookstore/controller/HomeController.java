@@ -1,5 +1,6 @@
 package com.JavaBookstore.JavaBookstore.controller;
 
+import com.JavaBookstore.JavaBookstore.domain.Book;
 import com.JavaBookstore.JavaBookstore.domain.User;
 import com.JavaBookstore.JavaBookstore.domain.security.PasswordResetToken;
 import com.JavaBookstore.JavaBookstore.domain.security.Role;
@@ -7,7 +8,6 @@ import com.JavaBookstore.JavaBookstore.domain.security.UserRole;
 import com.JavaBookstore.JavaBookstore.service.BookService;
 import com.JavaBookstore.JavaBookstore.service.UserService;
 import com.JavaBookstore.JavaBookstore.service.impl.UserSecurityService;
-
 import com.JavaBookstore.JavaBookstore.utility.MailConstructor;
 import com.JavaBookstore.JavaBookstore.utility.SecurityUtility;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import com.JavaBookstore.JavaBookstore.domain.Book;
+import javax.websocket.server.PathParam;
+import java.security.Principal;
 import java.util.*;
 
 @Controller
@@ -64,12 +65,38 @@ public class HomeController {
         return "myAccount";
     }
 
-    @RequestMapping("/booklist")
+    @RequestMapping("/bookshelf")
     public String bookshelf(Model model) {
         List<Book> bookList = bookService.findAll();
         model.addAttribute("bookList", bookList);
 
-        return "booklist";
+        return "bookshelf";
+    }
+
+    @RequestMapping("/detailBook")
+    public String detailBook
+            (@PathParam("id") Long id, Model model, Principal principal)
+
+    {
+        if (principal != null) {
+            String username = principal.getName();
+            User user = userService.findByUsername(username);
+            model.addAttribute("user", user);
+        }
+
+        Book book = bookService.findById(id);
+
+        model.addAttribute("book", book);
+
+        List<Integer> qtyList = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+
+        //https://stackoverflow.com/questions/50904742/property-or-field-name-cannot-be-found-on-object-of-type-java-util-optional
+        //model.addAttribute("book", bookService.findById(id)); //added to get bookDetail to appear
+        model.addAttribute("qtyList", qtyList);
+        model.addAttribute("qty", 1);
+
+        return "detailBook";
+
     }
 
     /*@RequestMapping("/forgetPassword")

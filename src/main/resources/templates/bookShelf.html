@@ -11,6 +11,7 @@
     <div class="row" style="margin-bottom: -120px;">
         <div class="col-xs-8">
             <h2 class="section-headline">
+
             <!--https://www.thymeleaf.org/apidocs/thymeleaf/2.1.4.RELEASE/org/thymeleaf/expression/Strings.html-->
             <h2 class="section-headline">
                 <!--<span th:text="${#strings.toUpperCase(user.username)}"></span>-->
@@ -45,17 +46,18 @@
                             <div class="row">
                                 <div class="col-xs-3">
                                     <!--need to create path in messages.property-->
-                                    <img class="img-responsive options-book" th:src="#{adminPath}+@{/../image/book/}+${book.id}+'.png'"/>
+                                    <a th:href="@{/detailBook?id=}+${book.id}">
+                                        <img class="img-responsive shelf-book" th:src="#{adminPath}+@{/../image/book/}+${book.id}+'.png'"/></a>
                                 </div>
                                 <div class="col-xs-9">
-                                    <h4 th:text="${book.title}"></h4>
+                                    <a th:href="@{/detailBook?id=}+${book.id}"><h4 th:text="${book.title}"></h4></a>
                                     <span th:text="${book.publicationDate}"></span>
-                                    <span th:text="${book.author}"></span>
-                                    <span th:text="${#strings.capitalize(book.format)}"></span>
+                                    <p th:text="${book.author}"></p>
+                                    <a th:href="@{/detailBook?id=}+${book.id}"><span th:text="${#strings.capitalize(book.format)}"></span></a>
                                     <span th:text="${book.numberOfPages}"><span> Pages</span></span>
-                                    <span style="font-size:x-large;color:#e9846a;">
+                                    <a th:href="@{/detailBook?id=}+${book.id}"><span style="font-size:x-large;color:#e9846a;">
                                         <!--thymeleaf number format-->
-                                        $<span th:text="${#numbers.formatDecimal(book.ourPrice, 0 , 'COMMA', 2, 'POINT')}"></span></span>
+                                        $<span th:text="${#numbers.formatDecimal(book.ourPrice, 0 , 'COMMA', 2, 'POINT')}"></span></span></a>
 
                                     <span style="text-decoration: line-through;">
                                         $<span th:text="${#numbers.formatDecimal(book.listPrice, 0 , 'COMMA', 2, 'POINT')}"></span></span>
@@ -80,6 +82,7 @@
 
 
 <div th:replace="common/header :: body-bottom-scripts">
+
 
 </div>
 </body>

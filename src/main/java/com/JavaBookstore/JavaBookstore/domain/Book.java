@@ -4,11 +4,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 
+
 @Entity
 public class Book {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+
     private Long id;
     private String title;
     private String author;
@@ -31,13 +33,9 @@ public class Book {
     @Transient
     private MultipartFile bookImage;
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId(){return id;}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) { this.id = id; }
 
     public String getTitle() {
         return title;
