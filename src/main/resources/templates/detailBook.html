@@ -83,7 +83,8 @@
                 </div>
 
                 <hr/>
-                <p th:text="${book.description}"></p>  <!--paragraph of book description-->
+               <!-- <p th:text="${book.description}"></p> --> <!--paragraph of book description-->
+                <p th:utext="${book.description}"></p>
 
             </div>
         </div>
