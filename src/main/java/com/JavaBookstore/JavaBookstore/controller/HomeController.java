@@ -2,6 +2,7 @@ package com.JavaBookstore.JavaBookstore.controller;
 
 import com.JavaBookstore.JavaBookstore.domain.Book;
 import com.JavaBookstore.JavaBookstore.domain.User;
+import com.JavaBookstore.JavaBookstore.domain.UserShipping;
 import com.JavaBookstore.JavaBookstore.domain.security.PasswordResetToken;
 import com.JavaBookstore.JavaBookstore.domain.security.Role;
 import com.JavaBookstore.JavaBookstore.domain.security.UserRole;
@@ -10,6 +11,7 @@ import com.JavaBookstore.JavaBookstore.service.UserService;
 import com.JavaBookstore.JavaBookstore.service.impl.UserSecurityService;
 import com.JavaBookstore.JavaBookstore.utility.MailConstructor;
 import com.JavaBookstore.JavaBookstore.utility.SecurityUtility;
+import com.JavaBookstore.JavaBookstore.utility.USConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -148,6 +150,28 @@ public class HomeController {
 
 
         return "myAccount";
+    }
+
+    @RequestMapping("/myProfile")
+    public String myProfile(Model model, Principal principal) {
+        User user = userService.findByUsername(principal.getName());
+        model.addAttribute("user", user);
+		model.addAttribute("userPaymentList", user.getUserPaymentList());
+		model.addAttribute("userShippingList", user.getUserShippingList());
+//		model.addAttribute("orderList", user.getOrderList());
+
+        UserShipping userShipping = new UserShipping();
+        model.addAttribute("userShipping", userShipping);
+
+        model.addAttribute("listOfCreditCards", true);
+        model.addAttribute("listOfShippingAddresses", true);
+
+        List<String> stateList = USConstants.listOfUSStatesCode;
+        Collections.sort(stateList);
+        model.addAttribute("stateList", stateList);
+        model.addAttribute("classActiveEdit", true);
+
+        return "myProfile";
     }
 
     //added while in pswrdrstkn
