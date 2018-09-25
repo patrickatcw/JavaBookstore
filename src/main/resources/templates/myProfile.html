@@ -303,8 +303,9 @@
                                         <div class="row">
                                             <div class="col-xs-12">
                                                 <img src="http://www.bookstore.colostate.edu/SiteImages/109-SchoolImages/109-ResponsiveImages/109-credit-cards-accepted-logo.jpg"
-                                                     style="width:400px;height:275px;"/>    <!--have to work on sizing changes-->
-                                                 <br />
+                                                     style="width:325px;height:75px;"/>    <!--have to work on sizing changes, done!-->
+                                                 <br/>
+                                                <br/>
                                                 <div class="form-group">
                                                     <label for="cardType">* Select Card Type:</label>
                                                     <select class="form-control" id="cardType" th:name="type" th:value="${userPayment.type}">
@@ -321,11 +322,8 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="cardNumber">** Card Number:</label>
-                                                    <div class="input-group">
-                                                        <input type="tel" class="form-control" id="cardNumber" required="required"
+                                                    <input type="tel" class="form-control" id="cardNumber" required="required"
                                                                placeholder = "Valid Card Number" th:name="cardNumber" th:value="${userPayment.cardNumber}"/>
-                                                        <span class="input-group-addon"><i class="fa fa-credit-card" aria-hidden="true"></i></span>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -375,11 +373,9 @@
                                                 </div>
                                             </div>
                                             <div class="col-xs-5">
-                                                <div class="form-group">
-                                                    <label for="cardCVV">CVV Code</label>
-                                                    <input id="cardCVV" type="tel" class="form-control" name="cvv"
-                                                           placeholder="CVV" th:name="cvv" th:value="${userPayment.cvv}" />
-                                                </div>
+                                                    <label for="cardCVV">* CVV Code <a href="https://www.cvvnumber.com/cvv.html" target="_blank" style="font-size:11px">(What is my CVV code?)</a></label>
+                                                <input id="cardCVV" type="tel" class="form-control" name="cvv"
+                                                           placeholder="CVV Code" th:name="cvv" th:value="${userPayment.cvv}" />
                                             </div>
                                         </div>
                                         <hr/>
