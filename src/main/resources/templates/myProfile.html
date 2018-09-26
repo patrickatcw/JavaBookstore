@@ -231,7 +231,7 @@
                                         <input hidden="hidden" name="id" th:value="${userPayment.id}">
 
                                         <div class="form-group">
-                                            <h5>* Give a name for your card:</h5>
+                                            <h5>* Provide a name for your card:</h5>
                                             <input type="text" class="form-control" id="cardName"
                                                    placeHolder="Card Name" th:name="cardName"
                                                    required="required" th:value="${userPayment.cardName}" />
@@ -245,7 +245,7 @@
                                         <div class="form-group">
                                             <label for="billingName">* Card Holder's Name (as it appears on card)</label> <input type="text"
                                                                                            class="form-control" id="billingName"
-                                                                                           placeholder="Receiver Name" th:name="userBillingName"
+                                                                                           placeholder="Card Holder's Name" th:name="userBillingName"
                                                                                            required="required"
                                                                                            th:value="${userBilling.userBillingName}" />
                                         </div>
@@ -265,7 +265,7 @@
                                                 <div class="form-group">
                                                     <label for="billingCity">* Card Holder's City</label> <input type="text"
                                                                                                    class="form-control" id="billingCity"
-                                                                                                   placeholder="Billing city" th:name="userBillingCity"
+                                                                                                   placeholder="Billing City" th:name="userBillingCity"
                                                                                                    required="required"
                                                                                                    th:value="${userBilling.userBillingCity}" />
                                                 </div>
@@ -288,7 +288,7 @@
                                                 <div class="form-group">
                                                     <label for="billingZipcode">* Card Holder's Zip Code</label> <input
                                                         type="text" class="form-control" id="billingZipcode"
-                                                        placeholder="Billing Zipcode" th:name="userBillingZipcode"
+                                                        placeholder="Billing Zip Code" th:name="userBillingZipcode"
                                                         required="required"
                                                         th:value="${userBilling.userBillingZipcode}" />
                                                 </div>
@@ -373,9 +373,11 @@
                                                 </div>
                                             </div>
                                             <div class="col-xs-5">
+                                                    <div class="form-group">
                                                     <label for="cardCVV">* CVV Code <a href="https://www.cvvnumber.com/cvv.html" target="_blank" style="font-size:11px">(What is my CVV code?)</a></label>
-                                                <input id="cardCVV" type="tel" class="form-control" name="cvv"
+                                                    <input id="cardCVV" type="tel" class="form-control" name="cvv"
                                                            placeholder="CVV Code" th:name="cvv" th:value="${userPayment.cvv}" />
+                                                    </div>
                                             </div>
                                         </div>
                                         <hr/>

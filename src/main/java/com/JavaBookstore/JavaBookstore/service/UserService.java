@@ -24,4 +24,8 @@ public interface UserService {
     //homecontroller
     User save(User user);
 
+    //for addnewcredtcard in homecontroller
+    void updateUserBilling(UserBilling userBilling, UserPayment userPayment, User user);
+    //now go into user service impl
+
 }

@@ -3,6 +3,8 @@ package com.JavaBookstore.JavaBookstore.service.impl;
 //implements userservice interface
 
 import com.JavaBookstore.JavaBookstore.domain.User;
+import com.JavaBookstore.JavaBookstore.domain.UserBilling;
+import com.JavaBookstore.JavaBookstore.domain.UserPayment;
 import com.JavaBookstore.JavaBookstore.domain.security.PasswordResetToken;
 import com.JavaBookstore.JavaBookstore.domain.security.UserRole;
 import com.JavaBookstore.JavaBookstore.repository.PasswordResetTokenRepository;
@@ -80,6 +82,16 @@ public class UserServiceImpl implements UserService {
     @Override
     public User save(User user) {
         return userRepository.save(user);
+    }
+
+    @Override
+    public void updateUserBilling(UserBilling userBilling, UserPayment userPayment, User user) {
+        userPayment.setUser(user);
+        userPayment.setUserBilling(userBilling);
+        userPayment.setDefaultPayment(true);
+        userBilling.setUserPayment(userPayment);
+        user.getUserPaymentList().add(userPayment);
+        save(user);
     }
 
 }
