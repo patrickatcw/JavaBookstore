@@ -9,6 +9,7 @@ import com.JavaBookstore.JavaBookstore.domain.security.PasswordResetToken;
 import com.JavaBookstore.JavaBookstore.domain.security.UserRole;
 import com.JavaBookstore.JavaBookstore.repository.PasswordResetTokenRepository;
 import com.JavaBookstore.JavaBookstore.repository.RoleRepository;
+import com.JavaBookstore.JavaBookstore.repository.UserPaymentRepository;
 import com.JavaBookstore.JavaBookstore.repository.UserRepository;
 import com.JavaBookstore.JavaBookstore.service.UserService;
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -33,6 +35,9 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private PasswordResetTokenRepository passwordResetTokenRepository;
     //need to define PasswordResetTokenRepository interface
+
+    @Autowired
+    private UserPaymentRepository userPaymentRepository;
 
     @Override
     public PasswordResetToken getPasswordResetToken(final String token) {
@@ -92,6 +97,24 @@ public class UserServiceImpl implements UserService {
         userBilling.setUserPayment(userPayment);
         user.getUserPaymentList().add(userPayment);
         save(user);
+    }
+
+    @Override
+    public void setUserDefaultPayment(Long userPaymentId, User user) {
+        List<UserPayment> userPaymentList = (List<UserPayment>) userPaymentRepository.findAll();
+        //forget to autowire userpaymentrepository, do that now, done
+
+        //checking id are same
+        for (UserPayment userPayment : userPaymentList) {
+            if(userPayment.getId() == userPaymentId) {
+                userPayment.setDefaultPayment(true);
+                userPaymentRepository.save(userPayment);
+            } else {
+                userPayment.setDefaultPayment(false);
+                userPaymentRepository.save(userPayment);
+                //now check myprofile for setdefault payment
+            }
+        }
     }
 
 }

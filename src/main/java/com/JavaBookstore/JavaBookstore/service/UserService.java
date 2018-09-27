@@ -28,4 +28,7 @@ public interface UserService {
     void updateUserBilling(UserBilling userBilling, UserPayment userPayment, User user);
     //now go into user service impl
 
+    //for defaultcreditcard
+    void setUserDefaultPayment(Long userPaymentId, User user);  //then to userserviceimpl
+
 }
