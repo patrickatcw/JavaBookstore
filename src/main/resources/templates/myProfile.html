@@ -182,7 +182,8 @@
                                  style="background-color: #ededed; margin-top: 20px;">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item active">
-                                        <a th:href="@{/listOfCreditCards}" th:style="${listOfCreditCards}? 'color:red'">
+                                        <a th:href="@{/listOfCreditCards}"
+                                           th:style="${listOfCreditCards}? 'color:red'">
                                             Credit Cards</a>
                                     </li>
                                     <li class="breadcrumb-item active">
@@ -211,7 +212,7 @@
                                                 <td th:text="${userPayment.cardName}"></td>
                                                 <td>
                                                     <a th:href="@{/updateCreditCard(id=${userPayment.id})}"><i
-                                                            class="fa fa-pencil"></i></a>
+                                                            class="fa fa-pencil"></i></a>&nbsp;&nbsp;&nbsp;
                                                     <a th:href="@{/removeCreditCard(id=${userPayment.id})}"><i
                                                             class="fa fa-times"></i></a>
                                                 </td>
