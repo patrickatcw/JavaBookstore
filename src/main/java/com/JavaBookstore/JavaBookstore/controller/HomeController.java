@@ -5,6 +5,7 @@ import com.JavaBookstore.JavaBookstore.domain.security.PasswordResetToken;
 import com.JavaBookstore.JavaBookstore.domain.security.Role;
 import com.JavaBookstore.JavaBookstore.domain.security.UserRole;
 import com.JavaBookstore.JavaBookstore.service.BookService;
+import com.JavaBookstore.JavaBookstore.service.UserPaymentService;
 import com.JavaBookstore.JavaBookstore.service.UserService;
 import com.JavaBookstore.JavaBookstore.service.impl.UserSecurityService;
 import com.JavaBookstore.JavaBookstore.utility.MailConstructor;
@@ -46,6 +47,9 @@ public class HomeController {
 
     @Autowired
     private BookService bookService;
+
+    @Autowired
+    private UserPaymentService userPaymentService;
 
     @RequestMapping("/")
     public String index(){
@@ -229,6 +233,38 @@ public class HomeController {
         /*model.addAttribute("orderList", user.orderList());*/
 
         return "myProfile";
+    }
+
+    //for operations logic, to delete, or edit credit card in credit card list
+    @RequestMapping("/updateCreditCard")
+    public String updateCreditCard(
+            @ModelAttribute("id") Long creditCardId, Principal principal, Model model
+    ) {
+        User user = userService.findByUsername(principal.getName());
+        UserPayment userPayment = userPaymentService.findById(creditCardId); //create userPaymentService
+
+        //comparing for security
+        if(user.getId() != userPayment.getUser().getId()) {
+            return "badRequestPage";
+        } else {
+            model.addAttribute("user", user);
+            UserBilling userBilling = userPayment.getUserBilling();
+            model.addAttribute("userPayment", userPayment);
+            model.addAttribute("userBilling", userBilling);
+
+            List<String> stateList = USConstants.listOfUSStatesCode;
+            Collections.sort(stateList);
+            model.addAttribute("stateList", stateList);
+
+            model.addAttribute("addNewCreditCard", true);
+            model.addAttribute("classActiveBilling", true);
+            model.addAttribute("listOfShippingAddresses", true);
+
+            model.addAttribute("userPaymentList", user.getUserPaymentList());
+            model.addAttribute("userShippingList", user.getUserShippingList());
+
+            return "myProfile";
+        }
     }
 
     @RequestMapping(value="/addNewCreditCard", method=RequestMethod.POST)
