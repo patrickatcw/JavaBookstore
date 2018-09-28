@@ -3,6 +3,7 @@ package com.JavaBookstore.JavaBookstore.service;
 import com.JavaBookstore.JavaBookstore.domain.User;
 import com.JavaBookstore.JavaBookstore.domain.UserBilling;
 import com.JavaBookstore.JavaBookstore.domain.UserPayment;
+import com.JavaBookstore.JavaBookstore.domain.UserShipping;
 import com.JavaBookstore.JavaBookstore.domain.security.PasswordResetToken;
 import com.JavaBookstore.JavaBookstore.domain.security.UserRole;
 
@@ -30,5 +31,8 @@ public interface UserService {
 
     //for defaultcreditcard
     void setUserDefaultPayment(Long userPaymentId, User user);  //then to userserviceimpl
+
+    //for addNewShippingAddress, then go to userserviceimpl
+    void updateUserShipping(UserShipping userShipping, User user);
 
 }

@@ -5,6 +5,7 @@ package com.JavaBookstore.JavaBookstore.service.impl;
 import com.JavaBookstore.JavaBookstore.domain.User;
 import com.JavaBookstore.JavaBookstore.domain.UserBilling;
 import com.JavaBookstore.JavaBookstore.domain.UserPayment;
+import com.JavaBookstore.JavaBookstore.domain.UserShipping;
 import com.JavaBookstore.JavaBookstore.domain.security.PasswordResetToken;
 import com.JavaBookstore.JavaBookstore.domain.security.UserRole;
 import com.JavaBookstore.JavaBookstore.repository.PasswordResetTokenRepository;
@@ -96,6 +97,15 @@ public class UserServiceImpl implements UserService {
         userPayment.setDefaultPayment(true);
         userBilling.setUserPayment(userPayment);
         user.getUserPaymentList().add(userPayment);
+        save(user);
+    }
+
+    //from userservice interface void updateUserShipping
+    @Override
+    public void updateUserShipping(UserShipping userShipping, User user){
+        userShipping.setUser(user);
+        userShipping.setUserShippingDefault(true);   //need to create method next
+        user.getUserShippingList().add(userShipping);
         save(user);
     }
 
