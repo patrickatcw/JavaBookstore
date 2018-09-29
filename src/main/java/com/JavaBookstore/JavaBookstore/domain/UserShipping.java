@@ -7,6 +7,7 @@ public class UserShipping {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	//private String userAddressName;
 	private String userShippingName;
 	private String userShippingStreet1;
 	private String userShippingStreet2;
@@ -31,11 +32,17 @@ public class UserShipping {
 		this.id = id;
 	}
 
+	/*public String getUserAddressName() {
+		return userAddressName;
+	}
+
+	public void setUserAddressName(String cardName) {
+		this.userAddressName = userAddressName;
+	}*/
 
 	public String getUserShippingName() {
 		return userShippingName;
 	}
-
 
 	public void setUserShippingName(String userShippingName) {
 		this.userShippingName = userShippingName;
