@@ -8,10 +8,7 @@ import com.JavaBookstore.JavaBookstore.domain.UserPayment;
 import com.JavaBookstore.JavaBookstore.domain.UserShipping;
 import com.JavaBookstore.JavaBookstore.domain.security.PasswordResetToken;
 import com.JavaBookstore.JavaBookstore.domain.security.UserRole;
-import com.JavaBookstore.JavaBookstore.repository.PasswordResetTokenRepository;
-import com.JavaBookstore.JavaBookstore.repository.RoleRepository;
-import com.JavaBookstore.JavaBookstore.repository.UserPaymentRepository;
-import com.JavaBookstore.JavaBookstore.repository.UserRepository;
+import com.JavaBookstore.JavaBookstore.repository.*;
 import com.JavaBookstore.JavaBookstore.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,6 +36,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserPaymentRepository userPaymentRepository;
+
+    @Autowired
+    private UserShippingRepository userShippingRepository;
 
     @Override
     public PasswordResetToken getPasswordResetToken(final String token) {
@@ -123,6 +123,22 @@ public class UserServiceImpl implements UserService {
                 userPayment.setDefaultPayment(false);
                 userPaymentRepository.save(userPayment);
                 //now check myprofile for setdefault payment
+            }
+        }
+    }
+
+    //from userservice impl
+    @Override
+    public void setUserDefaultShipping(Long userShippingId, User user) {
+        List<UserShipping> userShippingList = (List<UserShipping>) userShippingRepository.findAll();
+        //need to autowire userShippingRepository in here, do now....done
+        for (UserShipping userShipping : userShippingList) {
+            if(userShipping.getId() == userShippingId) {
+                userShipping.setUserShippingDefault(true);
+                userShippingRepository.save(userShipping);
+            } else {
+                userShipping.setUserShippingDefault(false);
+                userShippingRepository.save(userShipping);
             }
         }
     }

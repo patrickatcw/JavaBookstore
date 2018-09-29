@@ -35,4 +35,7 @@ public interface UserService {
     //for addNewShippingAddress, then go to userserviceimpl
     void updateUserShipping(UserShipping userShipping, User user);
 
+    //for @RequestMapping(value="/setDefaultShippingAddress"
+    void setUserDefaultShipping(Long userShippingId, User user);
+    //now to the userservice impl
 }
