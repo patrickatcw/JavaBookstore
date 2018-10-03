@@ -1,9 +1,10 @@
 package com.JavaBookstore.JavaBookstore.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
-
+import java.util.List;
 
 @Entity
 public class Book {
@@ -32,6 +33,11 @@ public class Book {
 
     @Transient
     private MultipartFile bookImage;
+
+    //added for shoppingbasket work
+    @OneToMany(mappedBy = "book")
+    @JsonIgnore
+    private List<BookToBasketItem> bookToBasketItemList;
 
     public Long getId(){return id;}
 
@@ -163,6 +169,12 @@ public class Book {
         this.bookImage = bookImage;
     }
 
+    public List<BookToBasketItem> getBookToBasketItemList() {
+        return bookToBasketItemList;
+    }
 
+    public void setBookToBasketItemList(List<BookToBasketItem> bookToBasketItemList) {
+        this.bookToBasketItemList = bookToBasketItemList;
+    }
 }
 

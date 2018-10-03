@@ -6,6 +6,7 @@ import com.JavaBookstore.JavaBookstore.domain.UserPayment;
 import com.JavaBookstore.JavaBookstore.domain.UserShipping;
 import com.JavaBookstore.JavaBookstore.domain.security.PasswordResetToken;
 import com.JavaBookstore.JavaBookstore.domain.security.UserRole;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 

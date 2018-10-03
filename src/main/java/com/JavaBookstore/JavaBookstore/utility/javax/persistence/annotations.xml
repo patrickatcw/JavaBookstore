@@ -2,7 +2,13 @@
     <item name='javax.persistence.Entity'>
         <annotation name='java.lang.Deprecated'/>
     </item>
+    <item name='javax.persistence.ManyToOne'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
     <item name='javax.persistence.OneToMany'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+    <item name='javax.persistence.OneToOne'>
         <annotation name='java.lang.Deprecated'/>
     </item>
 </root>
