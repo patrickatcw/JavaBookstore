@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common/header :: common-header">
+
+</head>
+
+<body>
+<div th:replace="common/header :: navbar"></div>
+
+<div class="container">
+    <div class="row" style="margin-bottom: -120px;">
+        <div class="col-xs-8">
+            <h2 class="section-headline">
+                <!--https://www.thymeleaf.org/apidocs/thymeleaf/2.1.4.RELEASE/org/thymeleaf/expression/Strings.html-->
+                <h2 class="section-headline">
+                    <!--<span th:text="${#strings.toUpperCase(user.username)}"></span>-->
+                    <!--evaluates if user exists-->
+                    <span th:text="${user}? ${#strings.toUpperCase(user.username)} : 'BOOK INVENTORY'"></span>
+                </h2>
+            </h2>
+        </div>
+        <div class="col-xs-4">
+            <img src="https://cdn.logojoy.com/wp-content/uploads/2017/07/Java_logo_icon.png"
+                 style="width:400px;height:275px;"/>
+        </div>
+    </div>
+    <hr style="position:absolute; width:90%; height:6px; background-color: #333; z-index:-1; margin-top:-80px;">
+    <!--this is the wooden cubby image-->
+    <img src="https://s3.envato.com/files/225693685/Preview_Image_00000.jpg"
+         style="margin-top:-75px;width:102%; height:175px;"/>
+
+    <div class="row" style="margin-top: 10px;">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-6 text-left">
+                    <a class="btn btn-primary" th:href="@{/bookshelf}">Continue
+                        Shopping...</a>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <a class="btn btn-primary"
+                       th:href="@{/checkout(id=${shoppingBasket.id})}">Check Out</a>
+                </div>
+                <br/>
+                <div th:if="${notEnoughStock}" class="alert alert-warning">
+                    OH NO!!! This product does not have enough inventory, please update your basket quantity.</div>
+                <div th:if="${emptyBasket}" class="alert alert-warning">OH NO!!! It appears as though your shopping
+                basket is empty. See if you can find some books that you would like, and add them to your shopping
+                basket, thank you!</div>
+                <div class="row">
+                    <div class="col-xs-8">
+                        <h4>Products</h4>
+                    </div>
+                    <div class="col-xs-2">
+                        <h4>Price</h4>
+                    </div>
+                    <div class="col-xs-2">
+                        <h4>Qty</h4>
+                    </div>
+                </div>
+
+                <!--this is displaying the products in the shopping basket-->
+                <div class="row" th:each="basketItem : ${basketItemList}">
+                    <form th:action="@{/shoppingBasket/updateBasketItem}" method="post">
+                        <hr/>
+                        <div class="col-xs-2">
+                            <a th:href="@{detailBook(id=${basketItem.book.id})}"> <img
+                                    class="img-responsive shelf-book"
+                                    th:src="#{adminPath}+@{/../image/book/}+
+								${basketItem.book.id}+'.png'" />
+                            </a>
+                            <p th:if="${basketItem.book.inStockNumber&gt;10}"
+                               style="color: green;">In Stock</p>
+                            <p
+                                    th:if="${basketItem.book.inStockNumber&lt;10 and basketItem.book.inStockNumber&gt;0}"
+                                    style="color: green;">
+                                There are only <span th:text="${basketItem.book.inStockNumber}"></span>in
+                                stock.
+                            </p>
+                            <p th:if="${basketItem.book.inStockNumber==0}"
+                               style="color: darkred;">Product is not available at this time, please check back later.</p>
+                        </div>
+
+                        <div class="col-xs-2">
+                            <h5 style="color: #c52d07; font-size: large;">
+                                $<span th:text="${basketItem.book.ourPrice}"
+                                       th:style="${basketItem.book.inStockNumber}==0? 'text-decoration: line-through' : ''"></span>
+                            </h5>
+                        </div>
+
+                        <div class="col-xs-2">
+                            <input hidden="hidden" name="id" th:value="${basketItem.id}" /> <input
+                                th:id="${basketItem.id}" th:name="qty"
+                                th:disabled="${basketItem.book.inStockNumber==0}"
+                                class="form-control basketItemQty" th:value="${basketItem.qty}" />
+                            <button style="display: none;"
+                                    th:id="'update-item-'+${basketItem.id}" type="submit"
+                                    class="btn btn-warning btn-xs">UPDATE</button> <!--updates quantity-->
+                        </div>
+                    </form>
+                </div>
+
+                <div class="row">
+                    <hr/>
+                    <h4 class="col-xs-12 text-right">
+                        <strong style="font-size: large;">Total Price (<span
+                                th:text="${#lists.size(basketItemList)}"></span> items):
+                        </strong> <span style="color: #c52d07; font-size: large;">$<span
+                            th:text="${shoppingBasket.grandTotal}"></span></span>
+                    </h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            </div>
+<!-- end of container -->
+
+
+<div th:replace="common/header :: body-bottom-scripts">
+
+</div>
+</body>
+</html>
