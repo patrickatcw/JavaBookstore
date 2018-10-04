@@ -15,6 +15,14 @@ import java.util.Set;
 @Entity
 public class User implements UserDetails {
 
+    public ShoppingBasket getShoppingBasket() {
+        return shoppingBasket;
+    }
+
+    public void setShoppingBasket(ShoppingBasket shoppingBasket) {
+        this.shoppingBasket = shoppingBasket;
+    }
+
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="id", nullable = false, updatable = false)
@@ -28,6 +36,9 @@ public class User implements UserDetails {
     private String email;
     private String phone;
     private boolean enabled=true;
+
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "user")
+    private ShoppingBasket shoppingBasket;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private List<UserShipping> userShippingList;
