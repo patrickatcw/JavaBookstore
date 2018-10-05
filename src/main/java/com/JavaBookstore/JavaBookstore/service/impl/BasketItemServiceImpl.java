@@ -5,11 +5,12 @@ import com.JavaBookstore.JavaBookstore.domain.ShoppingBasket;
 import com.JavaBookstore.JavaBookstore.repository.BasketItemRepository;
 import com.JavaBookstore.JavaBookstore.service.BasketItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.xml.ws.Action;
 import java.math.BigDecimal;
 import java.util.List;
 
+@Service
 public class BasketItemServiceImpl implements BasketItemService {
 
     @Autowired

@@ -2,10 +2,7 @@ package com.JavaBookstore.JavaBookstore.service.impl;
 
 //implements userservice interface
 
-import com.JavaBookstore.JavaBookstore.domain.User;
-import com.JavaBookstore.JavaBookstore.domain.UserBilling;
-import com.JavaBookstore.JavaBookstore.domain.UserPayment;
-import com.JavaBookstore.JavaBookstore.domain.UserShipping;
+import com.JavaBookstore.JavaBookstore.domain.*;
 import com.JavaBookstore.JavaBookstore.domain.security.PasswordResetToken;
 import com.JavaBookstore.JavaBookstore.domain.security.UserRole;
 import com.JavaBookstore.JavaBookstore.repository.*;
@@ -13,8 +10,11 @@ import com.JavaBookstore.JavaBookstore.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -64,6 +64,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional  //added for binding shopping basket to user
     public User createUser(User user, Set<UserRole> userRoles) {
         User localUser = userRepository.findByUsername(user.getUsername());
 
@@ -77,6 +78,13 @@ public class UserServiceImpl implements UserService {
             }
 
             user.getUserRoles().addAll(userRoles);
+
+            ShoppingBasket shoppingBasket = new ShoppingBasket();     //added for binding shopping basket to user
+            shoppingBasket.setUser(user);                         //added for binding shopping basket to user
+            user.setShoppingBasket(shoppingBasket);                 //added for binding shopping basket to user
+
+            user.setUserShippingList(new ArrayList<UserShipping>());        //added for binding shopping basket to user
+            user.setUserPaymentList(new ArrayList<UserPayment>());          //added for binding shopping basket to user
 
             localUser = userRepository.save(user);
         }
