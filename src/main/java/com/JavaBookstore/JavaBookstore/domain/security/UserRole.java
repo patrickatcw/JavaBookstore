@@ -9,7 +9,15 @@ import javax.persistence.*;
 public class UserRole {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    //had to address error, changed code below with commented errors and reference
+    //@GeneratedValue(strategy= GenerationType.AUTO)
+    //Data was not saved: object references an unsaved transient instance - save the transient instance before flushing
+    //https://stackoverflow.com/questions/17283431/data-was-not-saved-object-references-an-unsaved-transient-instance-save-the-t
+    //Hibernate Error: a different object with the same identifier value was already associated with the session
+    //https://stackoverflow.com/questions/16246675/hibernate-error-a-different-object-with-the-same-identifier-value-was-already-a
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JoinColumn(unique = true, nullable = false)
+
     //field
     private Long userRoleId;
 
@@ -20,6 +28,8 @@ public class UserRole {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="role_id")
+
+
     //field
     private Role role;
 
