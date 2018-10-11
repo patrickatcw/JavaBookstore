@@ -63,7 +63,8 @@
                 <!--<span th:text="${#strings.toUpperCase(user.username)}"></span>-->
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">SHOPPING CART</a></li>
+                <!--<li><a href="#">SHOPPING CART</a></li>-->
+                <li><a th:href="@{/shoppingBasket/basket}">SHOPPING BASKET</a></li>
                 <!--changed below while working in securityconfig brranch-->
                 <!--<li><a href="#">MY ACCOUNT</a></li>-->
                 <!--<li><a th:href="@{/login}">MY ACCOUNT</a></li>-->
