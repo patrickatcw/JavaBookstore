@@ -21,10 +21,10 @@ public class BookServiceImpl implements BookService{
     public Book findById(Long id) {
 
         //https://stackoverflow.com/questions/44101061/missing-crudrepositoryfindone-method
-        Book book = bookRepository.findById(id).get();
+        //Book book = bookRepository.findById(id).get();
 
-        //return bookRepository.findById(id).orElse(null);
-        return book;
+        return bookRepository.findById(id).orElse(null);
+        //return book;
 
     }
 
