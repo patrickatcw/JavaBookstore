@@ -7,7 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Book {
+public class Book extends java.awt.print.Book {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -39,7 +39,9 @@ public class Book {
     @JsonIgnore
     private List<BookToBasketItem> bookToBasketItemList;
 
-    public Long getId(){return id;}
+    public Long getId() {
+        return id;
+    }
 
     public void setId(Long id) { this.id = id; }
 
@@ -107,9 +109,9 @@ public class Book {
         this.format = format;
     }
 
-    //changes here to manage an isbn with different variables
-    //and changes made to database VARCHAR 255
-    public String getIsbn() { return isbn; }
+    public String getIsbn() {
+        return isbn;
+    }
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
@@ -139,10 +141,12 @@ public class Book {
         this.ourPrice = ourPrice;
     }
 
-    public boolean isActive() { return active;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setActive(boolean active) { this.active = active;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public String getDescription() {

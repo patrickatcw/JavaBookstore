@@ -4,8 +4,11 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.JavaBookstore.JavaBookstore.domain.Book;
 
+import java.util.List;
+
 
 public interface BookRepository extends CrudRepository<Book, Long>{
 
+    List<Object> findById();
 
 }

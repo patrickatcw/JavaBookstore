@@ -55,7 +55,6 @@
                         <p><strong>Shipping Weight: </strong><span th:text="${book.shippingWeight}"></span> Ounces</p>
                     </div>
 
-
                     <div class="col-xs-7">
                         <div class="panel panel-default" style="border-width: 5px; margin-top: 20px;">
                             <div class="panel-body">
@@ -71,9 +70,9 @@
                                         </select>
                                     </div>
                                     <div class="col-xs-6">
-                                        <h4 th:if="*{book.inStockNumber&gt;10}" style="color: brightgreen">IN STOCK</h4>
-                                        <h4 th:if="*{book.inStockNumber&lt;10 and book.inStockNumber&gt;0}" style="color: brightgreen">ONLY <span th:text="${book.inStockNumber}"> AVAILABLE</span></h4>
-                                        <h4 th:if="*{book.inStockNumber==0}" style="color:darkpurple;">NOT AVAILABLE</h4>
+                                        <h4 th:if="*{book.inStockNumber&gt;10}" style="color: green">IN STOCK</h4>
+                                        <h4 th:if="*{book.inStockNumber&lt;10 and book.inStockNumber&gt;0}" style="color: green">ONLY <span th:text="${book.inStockNumber}"> AVAILABLE</span></h4>
+                                        <h4 th:if="*{book.inStockNumber==0}" style="color:red;">NOT AVAILABLE</h4>
                                         <button type="submit" class="btn btn-warning" style="color:black;border:1px solid black; padding: 10px 40px 10px 40px;">ADD TO MY BASKET</button>
                                     </div>
                                 </div>

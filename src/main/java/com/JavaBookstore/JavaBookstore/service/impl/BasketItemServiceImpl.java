@@ -1,8 +1,12 @@
 package com.JavaBookstore.JavaBookstore.service.impl;
 
 import com.JavaBookstore.JavaBookstore.domain.BasketItem;
+import com.JavaBookstore.JavaBookstore.domain.BookToBasketItem;
 import com.JavaBookstore.JavaBookstore.domain.ShoppingBasket;
+import com.JavaBookstore.JavaBookstore.domain.User;
+import com.JavaBookstore.JavaBookstore.domain.Book;
 import com.JavaBookstore.JavaBookstore.repository.BasketItemRepository;
+import com.JavaBookstore.JavaBookstore.repository.BookToBasketItemRepository;
 import com.JavaBookstore.JavaBookstore.service.BasketItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +19,10 @@ public class BasketItemServiceImpl implements BasketItemService {
 
     @Autowired
     private BasketItemRepository basketItemRepository;  //need to make repository interface
+
+    //wire it up after making booktobasketitemrepository interface
+    @Autowired
+    private BookToBasketItemRepository bookToBasketItemRepository;
 
     public List<BasketItem> findByShoppingBasket (ShoppingBasket shoppingBasket){
 
@@ -29,6 +37,44 @@ public class BasketItemServiceImpl implements BasketItemService {
         basketItem.setSubtotal(bigDecimal);
 
         basketItemRepository.save(basketItem);
+
+        return basketItem;
+    }
+
+    @Override
+    public BasketItem addBookToBasketItem(java.awt.print.Book book, User user, int qty) {
+        return null;
+    }
+
+    public BasketItem addBookToBasketItem(Book book, User user, int qty) {
+
+        List<BasketItem> basketItemList = findByShoppingBasket(user.getShoppingBasket());
+
+        for (BasketItem basketItem : basketItemList) {
+
+            if(book.getId() == basketItem.getBook().getId()) {
+
+                basketItem.setQty(basketItem.getQty()+qty);
+                basketItem.setSubtotal(new BigDecimal(book.getOurPrice()).multiply(new BigDecimal(qty)));
+
+                basketItemRepository.save(basketItem);
+                return basketItem;
+
+            }
+        }
+
+        BasketItem basketItem = new BasketItem();
+        basketItem.setShoppingBasket(user.getShoppingBasket());
+        basketItem.setBook(book);
+
+        basketItem.setQty(qty);
+        basketItem.setSubtotal(new BigDecimal(book.getOurPrice()).multiply(new BigDecimal(qty)));
+        basketItem = basketItemRepository.save(basketItem);
+
+        BookToBasketItem bookToBasketItem = new BookToBasketItem();
+        bookToBasketItem.setBook(book);
+        bookToBasketItem.setBasketItem(basketItem);
+        bookToBasketItemRepository.save(bookToBasketItem); //define booktobasketitemrepository
 
         return basketItem;
     }

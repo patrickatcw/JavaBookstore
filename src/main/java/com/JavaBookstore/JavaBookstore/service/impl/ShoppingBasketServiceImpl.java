@@ -6,10 +6,8 @@ import com.JavaBookstore.JavaBookstore.repository.ShoppingBasketRepository;
 import com.JavaBookstore.JavaBookstore.service.BasketItemService;
 import com.JavaBookstore.JavaBookstore.service.ShoppingBasketService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.stereotype.Service;
 
-import javax.xml.ws.Action;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -31,7 +29,7 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
 
         for (BasketItem basketItem : basketItemList){
 
-            if(basketItem.getBook(). getInStockNumber() > 0){
+            if(basketItem.getBook().getInStockNumber() > 0){
 
                 basketItemService.updateBasketItem(basketItem);  //need to make this method, done
                 basketTotal = basketTotal.add(basketItem.getSubtotal());

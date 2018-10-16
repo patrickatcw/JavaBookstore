@@ -15,14 +15,6 @@ import java.util.Set;
 @Entity
 public class User implements UserDetails {
 
-    public ShoppingBasket getShoppingBasket() {
-        return shoppingBasket;
-    }
-
-    public void setShoppingBasket(ShoppingBasket shoppingBasket) {
-        this.shoppingBasket = shoppingBasket;
-    }
-
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="id", nullable = false, updatable = false)
@@ -116,6 +108,10 @@ public class User implements UserDetails {
         this.userPaymentList = userPaymentList;
     }
 
+    public ShoppingBasket getShoppingBasket() { return shoppingBasket;}
+
+    public void setShoppingBasket(ShoppingBasket shoppingBasket) { this.shoppingBasket = shoppingBasket; }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Set<GrantedAuthority> authorities = new HashSet<>();
@@ -143,6 +139,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return enabled;
     }
-
 
 }

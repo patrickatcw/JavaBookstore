@@ -86,6 +86,7 @@ public class BasketItem {
         this.order = order;
     }
 
-
+    public void setBook(java.awt.print.Book book) {
+    }
 }
 

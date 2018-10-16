@@ -41,7 +41,8 @@ public class BookToBasketItem {
         this.basketItem = basketItem;
     }
 
-
+    public void setBook(java.awt.print.Book book) {
+    }
 }
 
 

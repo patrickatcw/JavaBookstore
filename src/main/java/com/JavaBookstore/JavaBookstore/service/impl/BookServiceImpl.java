@@ -2,7 +2,6 @@ package com.JavaBookstore.JavaBookstore.service.impl;
 
 import java.util.List;
 
-
 import com.JavaBookstore.JavaBookstore.domain.Book;
 import com.JavaBookstore.JavaBookstore.repository.BookRepository;
 import com.JavaBookstore.JavaBookstore.service.BookService;
@@ -21,10 +20,11 @@ public class BookServiceImpl implements BookService{
 
     public Book findById(Long id) {
 
-        //https://www.concretepage.com/spring-boot/spring-boot-crudrepository-example
+        //https://stackoverflow.com/questions/44101061/missing-crudrepositoryfindone-method
         Book book = bookRepository.findById(id).get();
-        return book;
 
+        //return bookRepository.findById(id).orElse(null);
+        return book;
 
     }
 
