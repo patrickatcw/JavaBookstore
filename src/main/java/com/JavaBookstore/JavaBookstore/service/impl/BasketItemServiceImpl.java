@@ -1,10 +1,6 @@
 package com.JavaBookstore.JavaBookstore.service.impl;
 
-import com.JavaBookstore.JavaBookstore.domain.BasketItem;
-import com.JavaBookstore.JavaBookstore.domain.BookToBasketItem;
-import com.JavaBookstore.JavaBookstore.domain.ShoppingBasket;
-import com.JavaBookstore.JavaBookstore.domain.User;
-import com.JavaBookstore.JavaBookstore.domain.Book;
+import com.JavaBookstore.JavaBookstore.domain.*;
 import com.JavaBookstore.JavaBookstore.repository.BasketItemRepository;
 import com.JavaBookstore.JavaBookstore.repository.BookToBasketItemRepository;
 import com.JavaBookstore.JavaBookstore.service.BasketItemService;
@@ -24,7 +20,7 @@ public class BasketItemServiceImpl implements BasketItemService {
     @Autowired
     private BookToBasketItemRepository bookToBasketItemRepository;
 
-    public List<BasketItem> findByShoppingBasket (ShoppingBasket shoppingBasket){
+    public List<BasketItem> findByShoppingBasket(ShoppingBasket shoppingBasket) {
 
         return basketItemRepository.findByShoppingBasket(shoppingBasket);
 
@@ -39,11 +35,6 @@ public class BasketItemServiceImpl implements BasketItemService {
         basketItemRepository.save(basketItem);
 
         return basketItem;
-    }
-
-    @Override
-    public BasketItem addBookToBasketItem(java.awt.print.Book book, User user, int qty) {
-        return null;
     }
 
     public BasketItem addBookToBasketItem(Book book, User user, int qty) {

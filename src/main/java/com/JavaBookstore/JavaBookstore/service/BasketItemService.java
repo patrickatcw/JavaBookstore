@@ -1,11 +1,10 @@
 package com.JavaBookstore.JavaBookstore.service;
 
 import com.JavaBookstore.JavaBookstore.domain.BasketItem;
+import com.JavaBookstore.JavaBookstore.domain.Book;
 import com.JavaBookstore.JavaBookstore.domain.ShoppingBasket;
 import com.JavaBookstore.JavaBookstore.domain.User;
 
-
-import java.awt.print.Book;
 import java.util.List;
 
 public interface BasketItemService {

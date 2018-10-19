@@ -42,6 +42,9 @@
 
             <br/>
             <div class="col-xs-9">
+                <h3><span th:if="${addBookSuccess}" style="color: forestgreen"><i class="fa fa-check" aria-hidden="true" style="color: forestgreen"></i>Well Done!! Your book(s) selection has been added to your basket!</span></h3>
+                <h3><span th:if="${notEnoughStock}" style="color: red">OH NO!! There is currently only <span th:text="${book.inStockNumber}"></span> in Stock.
+                    Please check back at another time for this product, thank you!</span></h3>
                 <h3 th:text="${book.title}">Book Title</h3>
                 <div class="row">
                     <div class="col-xs-5">

@@ -43,6 +43,7 @@ public class BookToBasketItem {
 
     public void setBook(java.awt.print.Book book) {
     }
+
 }
 
 

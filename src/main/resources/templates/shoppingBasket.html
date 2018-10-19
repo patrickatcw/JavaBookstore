@@ -69,10 +69,15 @@
                         <hr/>
                         <div class="col-xs-2">
                             <a th:href="@{detailBook(id=${basketItem.book.id})}"> <img
-                                    class="img-responsive shelf-book"
+                                    style="width:70px;"
+                                    class="img-responsive shelf-book center-block"
                                     th:src="#{adminPath}+@{/../image/book/}+
 								${basketItem.book.id}+'.png'" />
                             </a>
+                            </div>
+                        <div class="col-xs-6">
+                                <div style="margin-left:50px;">
+                                    <a th:href="@{/detailBook?id=}+${basketItem.book.id}"><h4 th:text="${basketItem.book.title}"></h4></a>
                             <p th:if="${basketItem.book.inStockNumber&gt;10}"
                                style="color: green;">In Stock</p>
                             <p
@@ -83,7 +88,9 @@
                             </p>
                             <p th:if="${basketItem.book.inStockNumber==0}"
                                style="color: darkred;">Product is not available at this time, please check back later.</p>
-                        </div>
+                                    <a th:href="@{/shoppingBasket/removeItem?id=}+${basketItem.id}">DELETE</a>
+                                </div>
+                                </div>
 
                         <div class="col-xs-2">
                             <h5 style="color: #c52d07; font-size: large;">
@@ -94,7 +101,8 @@
 
                         <div class="col-xs-2">
                             <input hidden="hidden" name="id" th:value="${basketItem.id}" /> <input
-                                th:id="${basketItem.id}" th:name="qty"
+                                th:id="${basketItem.id}"
+                                th:name="qty"
                                 th:disabled="${basketItem.book.inStockNumber==0}"
                                 class="form-control basketItemQty" th:value="${basketItem.qty}" />
                             <button style="display: none;"
@@ -107,7 +115,7 @@
                 <div class="row">
                     <hr/>
                     <h4 class="col-xs-12 text-right">
-                        <strong style="font-size: large;">Total Price (<span
+                        <strong style="font-size: large;">Total Price: (<span
                                 th:text="${#lists.size(basketItemList)}"></span> items):
                         </strong> <span style="color: #c52d07; font-size: large;">$<span
                             th:text="${shoppingBasket.grandTotal}"></span></span>
