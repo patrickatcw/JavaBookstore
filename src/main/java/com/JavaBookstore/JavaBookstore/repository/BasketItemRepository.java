@@ -11,4 +11,8 @@ public interface BasketItemRepository extends CrudRepository<BasketItem, Long> {
     List<BasketItem> findByShoppingBasket(ShoppingBasket shoppingBasket);
     //returning a list of shopping basket items by springboot
 
+    void deleteByBasketItem(BasketItem basketItem);
+
+    BasketItem findById();
+
 }

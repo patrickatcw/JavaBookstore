@@ -70,4 +70,18 @@ public class BasketItemServiceImpl implements BasketItemService {
         return basketItem;
     }
 
+    public BasketItem findById(Long id) {
+
+        return basketItemRepository.findById();
+
+    }
+
+    public void removeBasketItem(BasketItem basketItem) {
+
+        bookToBasketItemRepository.deleteByBasketItem(basketItem); //make method
+        basketItemRepository.delete(basketItem);
+
+    }
+
+
 }

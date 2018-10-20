@@ -5,7 +5,6 @@ import com.JavaBookstore.JavaBookstore.domain.BasketItem;
 import com.JavaBookstore.JavaBookstore.domain.Book;
 import com.JavaBookstore.JavaBookstore.domain.ShoppingBasket;
 import com.JavaBookstore.JavaBookstore.domain.User;
-
 import com.JavaBookstore.JavaBookstore.service.BasketItemService;
 import com.JavaBookstore.JavaBookstore.service.BookService;
 import com.JavaBookstore.JavaBookstore.service.ShoppingBasketService;
@@ -15,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
 import java.util.List;
@@ -73,6 +73,25 @@ public class ShoppingBasketController {
 
             return "forward:/detailBook?id=" +book.getId();
 
+    }
+
+    @RequestMapping("/updateBasketItem")
+    public String updateShoppingBasket(
+            @ModelAttribute("id") Long basketItemId,
+            @ModelAttribute("qty") int qty
+    ) {
+        BasketItem basketItem = basketItemService.findById(basketItemId); //make this method, done!!
+        basketItem.setQty(qty);
+        basketItemService.updateBasketItem(basketItem);
+
+        return "forward:/shoppingBasket/basket";
+    }
+
+    @RequestMapping("/removeItem")
+    public String removeItem(@RequestParam("id") Long id) {
+        basketItemService.removeBasketItem(basketItemService.findById(id));
+
+        return "forward:/shoppingBasket/basket";
     }
 
 }

@@ -16,4 +16,9 @@ public interface BasketItemService {
 
     BasketItem addBookToBasketItem(Book book, User user, int qty);
 
+    BasketItem findById(Long id);//from shoppingbasketcontroller in updatebasketitem code block, now
+                                    //go to basketitemserviceimpl
+
+    void removeBasketItem(BasketItem basketItem);
+
 }
