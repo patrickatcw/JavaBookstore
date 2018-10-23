@@ -89,7 +89,9 @@ public class ShoppingBasketController {
 
     @RequestMapping("/removeItem")
     public String removeItem(@RequestParam("id") Long id) {
-        basketItemService.removeBasketItem(basketItemService.findById(id));
+        //basketItemService.removeBasketItem (basketItemService.findById(id));
+
+        basketItemService.removeById(id);
 
         return "forward:/shoppingBasket/basket";
     }

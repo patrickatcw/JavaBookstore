@@ -12,6 +12,7 @@ public interface BasketItemService {
     List<BasketItem> findByShoppingBasket(ShoppingBasket shoppingBasket);
 
     /*void updateBasketItem(BasketItem basketItem);*/ //then go to basketitemserviceimpl
+
     BasketItem updateBasketItem(BasketItem basketItem);
 
     BasketItem addBookToBasketItem(Book book, User user, int qty);
@@ -19,6 +20,8 @@ public interface BasketItemService {
     BasketItem findById(Long id);//from shoppingbasketcontroller in updatebasketitem code block, now
                                     //go to basketitemserviceimpl
 
-    void removeBasketItem(BasketItem basketItem);
+    //void removeBasketItem(BasketItem basketItem);
+
+    void removeById(Long id);
 
 }

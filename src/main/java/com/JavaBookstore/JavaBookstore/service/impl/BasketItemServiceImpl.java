@@ -72,16 +72,25 @@ public class BasketItemServiceImpl implements BasketItemService {
 
     public BasketItem findById(Long id) {
 
-        return basketItemRepository.findById();
+        //return basketItemRepository.findById();
+
+        BasketItem basketItem = basketItemRepository.findById(id).get();
+        return basketItem;
 
     }
 
-    public void removeBasketItem(BasketItem basketItem) {
+    /*public void removeBasketItem(BasketItem basketItem) {
 
         bookToBasketItemRepository.deleteByBasketItem(basketItem); //make method
         basketItemRepository.delete(basketItem);
 
-    }
+    }*/
 
+    public void removeById(Long id) {
+
+        //bookToBasketItemRepository.deleteById(id); //make method
+        basketItemRepository.deleteById(id);
+
+    }
 
 }
