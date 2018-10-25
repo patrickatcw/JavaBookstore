@@ -365,7 +365,99 @@
                     </div>
 
                     <!-- 3. Review Items and Shipping -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion"
+                                   href="#reviewItems"> 3. Review Items and Shipping </a>
+                            </h4>
+                        </div>
+                        <div id="reviewItems" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <h4>Choose your shipping method...</h4>
+                                <div class="radio">
+                                    <label> <input type="radio" name="shippingMethod"
+                                                   value="groundShipping" checked="checked" /> Ground Shipping
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label> <input type="radio" name="shippingMethod"
+                                                   value="premiumShipping" /> Premium Shipping
+                                    </label>
+                                </div>
 
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        <h4>Products</h4>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <h4>Price</h4>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <h4>Qty</h4>
+                                    </div>
+                                </div>
+
+                                <!-- display products in basket -->
+                                <div class="row" th:each="basketItem : ${basketItemList}">
+                                    method="post">
+                                    <hr />
+                                    <div class="col-xs-2">
+                                        <a th:href="@{/detailBook(id=${basketItem.book.id})}"> <img
+                                                class="img-responsive shelf-book"
+                                                th:src="#{adminPath}+@{/../image/book/}+${basketItem.book.id}+'.png'"
+                                                style="width: 70px;" />
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-6">
+                                        <div style="margin-left: 50px;">
+                                            <a th:href="@{/detailBook?id=}+${basketItem.book.id}"><h4
+                                                    th:text="${basketItem.book.title}"></h4></a>
+                                            <p th:if="${basketItem.book.inStockNumber&gt;10}"
+                                               style="color: green;">This item is in stock!</p>
+                                            <p
+                                                    th:if="${basketItem.book.inStockNumber&lt;10 and basketItem.book.inStockNumber&gt;0}"
+                                                    style="color: green;">
+                                                Only <span th:text="${basketItem.book.inStockNumber}"></span>
+                                                In Stock
+                                            </p>
+                                            <p th:if="${basketItem.book.inStockNumber==0}"
+                                               style="color: darkred;">Product is not available at this time, please check back later.</p>
+                                            <a th:href="@{/shoppingBasket/removeItem?id=}+${basketItem.id}">delete</a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-2">
+                                        <h5 style="color: #db3208; font-size: large;">
+                                            $<span th:text="${basketItem.book.ourPrice}"
+                                                   th:style="${basketItem.book.inStockNumber}==0? 'text-decoration: line-through' : ''"></span>
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-xs-2">
+                                        <h5 style="font-size: large;" th:text="${basketItem.qty}"></h5>
+                                    </div>
+
+                                </div>
+
+                                <hr />
+                                <hr />
+                                <h4 class="col-xs-12 text-right">
+                                    <strong style="font-size: large;">Order Total (<span
+                                            th:text="${#lists.size(basketItemList)}"></span> items):
+                                    </strong> <span style="color: #db3208; font-szie: large;">$<span
+                                        th:text="${shoppingBasket.grandTotal}"></span></span>
+                                </h4>
+                                <br />
+                                <br />
+                                <button type="submit" class="btn btn-warning btn-block">SUBMIT ORDER</button>
+                                <p style="font-size: smaller;">
+                                    By submitting your order, you are complying with our
+                                    <a href="#">"privacy</a> notice" and <a href="#">"terms</a> of use" agreement.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </form>
