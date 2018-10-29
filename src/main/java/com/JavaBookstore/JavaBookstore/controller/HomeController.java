@@ -219,7 +219,7 @@ public class HomeController {
         model.addAttribute("user", user);
 
         model.addAttribute("addNewCreditCard", true);
-        model.addAttribute("classActiveShipping", true);
+        model.addAttribute("classActiveBilling", true);
         model.addAttribute("listOfShippingAddresses", true);
 
         UserBilling userBilling = new UserBilling();
