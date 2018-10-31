@@ -294,11 +294,11 @@
                                     </div>
                                     <div class="col-xs-5">
                                         <div class="form-group">
-                                            <label for="cardCVC">* CVV Code: <a
+                                            <label for="cardCVV">* CVV Code: <a
                                                     href="https://www.cvvnumber.com/cvv.html" target="_blank"
                                                     style="font-size:11px">(What is my CVV code?)</a></label>
-                                            <input id="cardCVC" type="tel" class="form-control" name="cvc"
-                                                   placeholder="CVV Code" th:name="cvv" th:value="${userPayment.cvv}"/>
+                                            <input id="cardCVV" type="tel" class="form-control" name="cvv"
+                                                   placeholder="CVV Code" th:name="cvv" th:value="${payment.cvv}"/>
                                         </div>
                                     </div>
                                 </div>
@@ -462,7 +462,8 @@
                                 <br />
                                 <button type="submit" class="btn btn-warning btn-block">SUBMIT ORDER</button>
                                 <p style="font-size: smaller;">
-                                    By submitting your order, you are complying with our
+                                    <br />
+                                    **IMPORTANT NOTE: By submitting your order, you are complying with our
                                     <a href="#">"privacy</a> notice" and <a href="#">"terms</a> of use" agreement.
                                 </p>
                             </div>
