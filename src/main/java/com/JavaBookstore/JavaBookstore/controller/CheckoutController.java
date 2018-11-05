@@ -35,27 +35,30 @@ public class CheckoutController {
     @Autowired
     private PaymentService paymentService;
 
+    @Autowired
+    private UserShippingService userShippingService;
+
     @RequestMapping("/checkout")
     public String checkout(
             @RequestParam("id") Long basketId,
-            @RequestParam(value="missingRequiredField", required=false) boolean missingRequiredField,
+            @RequestParam(value = "missingRequiredField", required = false) boolean missingRequiredField,
             Model model, Principal principal
-    ){
+    ) {
         User user = userService.findByUsername(principal.getName());
 
-        if(basketId != user.getShoppingBasket().getId()) {
+        if (basketId!=user.getShoppingBasket().getId()) {
             return "badRequestPage";
         }
 
         List<BasketItem> basketItemList = basketItemService.findByShoppingBasket(user.getShoppingBasket());
 
-        if(basketItemList.size() == 0) {
+        if (basketItemList.size()==0) {
             model.addAttribute("emptyBasket", true);
             return "forward:/shoppingBasket/basket";
         }
 
         for (BasketItem basketItem : basketItemList) {
-            if(basketItem.getBook().getInStockNumber() < basketItem.getQty()) {
+            if (basketItem.getBook().getInStockNumber() < basketItem.getQty()) {
                 model.addAttribute("notEnoughStock", true);
                 return "forward:/shoppingBasket/basket";
             }
@@ -67,13 +70,13 @@ public class CheckoutController {
         model.addAttribute("userShippingList", userShippingList);
         model.addAttribute("userPaymentList", userPaymentList);
 
-        if (userPaymentList.size() == 0) {
+        if (userPaymentList.size()==0) {
             model.addAttribute("emptyPaymentList", true);
         } else {
             model.addAttribute("emptyPaymentList", false);
         }
 
-        if (userShippingList.size() == 0) {
+        if (userShippingList.size()==0) {
             model.addAttribute("emptyShippingList", true);
         } else {
             model.addAttribute("emptyShippingList", false);
@@ -81,14 +84,14 @@ public class CheckoutController {
 
         ShoppingBasket shoppingBasket = user.getShoppingBasket();
 
-        for(UserShipping userShipping : userShippingList) {
-            if(userShipping.isUserShippingDefault()) {
+        for (UserShipping userShipping : userShippingList) {
+            if (userShipping.isUserShippingDefault()) {
                 shippingAddressService.setByUserShipping(userShipping, shippingAddress);
             }
         }
 
         for (UserPayment userPayment : userPaymentList) {
-            if(userPayment.isDefaultPayment()) {
+            if (userPayment.isDefaultPayment()) {
                 paymentService.setByUserPayment(userPayment, payment);      //make paymentService interface
                 billingAddressService.setByUserBilling(userPayment.getUserBilling(), billingAddress);
                 //make billingAddressService interface
@@ -108,12 +111,65 @@ public class CheckoutController {
 
         model.addAttribute("classActiveShipping", true);
 
-        if(missingRequiredField) {
+        if (missingRequiredField) {
             model.addAttribute("missingRequiredField", true);
         }
 
         return "checkout";
 
     }
+
+    @RequestMapping("/setShippingAddress")
+    public String setShippingAddress(
+            @RequestParam("userShippingId") Long userShippingId,
+            Principal principal, Model model
+    ) {
+        User user = userService.findByUsername(principal.getName());
+        UserShipping userShipping = userShippingService.findById(userShippingId);
+
+        if (userShipping.getUser().getId()!=user.getId()) {
+            return "badRequestPage";
+        } else {
+            shippingAddressService.setByUserShipping(userShipping, shippingAddress);
+
+            List<BasketItem> basketItemList = basketItemService.findByShoppingBasket(user.getShoppingBasket());
+
+            BillingAddress billingAddress = new BillingAddress();
+
+            model.addAttribute("shippingAddress", shippingAddress);
+            model.addAttribute("payment", payment);
+            model.addAttribute("billingAddress", billingAddress);
+            model.addAttribute("cartItemList", basketItemList);
+            model.addAttribute("shoppingCart", user.getShoppingBasket());
+
+            List<String> stateList = USConstants.listOfUSStatesCode;
+            Collections.sort(stateList);
+            model.addAttribute("stateList", stateList);
+
+            List<UserShipping> userShippingList = user.getUserShippingList();
+            List<UserPayment> userPaymentList = user.getUserPaymentList();
+
+            model.addAttribute("userShippingList", userShippingList);
+            model.addAttribute("userPaymentList", userPaymentList);
+
+            model.addAttribute("shippingAddress", shippingAddress);
+
+            model.addAttribute("classActiveShipping", true);
+
+            if (userPaymentList.size()==0) {
+                model.addAttribute("emptyPaymentList", true);
+            } else {
+                model.addAttribute("emptyPaymentList", false);
+            }
+
+
+            model.addAttribute("emptyShippingList", false);
+
+
+            return "checkout";
+        }
+
+    }
+
 }
 
