@@ -139,8 +139,8 @@ public class CheckoutController {
             model.addAttribute("shippingAddress", shippingAddress);
             model.addAttribute("payment", payment);
             model.addAttribute("billingAddress", billingAddress);
-            model.addAttribute("cartItemList", basketItemList);
-            model.addAttribute("shoppingCart", user.getShoppingBasket());
+            model.addAttribute("basketItemList", basketItemList);
+            model.addAttribute("shoppingBasket", user.getShoppingBasket());
 
             List<String> stateList = USConstants.listOfUSStatesCode;
             Collections.sort(stateList);
@@ -161,7 +161,6 @@ public class CheckoutController {
             } else {
                 model.addAttribute("emptyPaymentList", false);
             }
-
 
             model.addAttribute("emptyShippingList", false);
 
